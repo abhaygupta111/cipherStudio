@@ -1,0 +1,78 @@
+<!-- Modal -->
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="mt-3">
+              <h5>Add Your Details</h5>
+            </div>
+            <div class="form_design">
+              <form (ngSubmit)="saveRecord();" #recordForm="ngForm">
+                <div class="row">
+                  <div class="col-md-4 col-sm-6 col-12">
+                    <div class="form-group">
+                      <input class="form-control" type="text" placeholder="Enter First Name" name="fName"
+                        [(ngModel)]="dataObj.fName" max="50" required>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6 col-12">
+                    <div class="form-group">
+                      <input class="form-control" type="text" placeholder="Enter Last Name" name="lName"
+                        [(ngModel)]="dataObj.lName" max="50" required>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6 col-12">
+                    <div class="form-group">
+                      <input class="form-control" type="date" [(ngModel)]="dataObj.dob" name="dob" required>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6 col-12">
+                    <div class="form-group">
+                      <input class="form-control" type="number" placeholder="Enter RollNo"
+                        [(ngModel)]="dataObj.rollNo" name="rollNo" maxlength="10" required>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6 col-12">
+                    <div class="form-group">
+                      <input class="form-control" type="number" placeholder="Enter Class"
+                        [(ngModel)]="dataObj.class" name="class" maxlength="10" required>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6 col-12">
+                    <div class="form-group">
+                      <input class="form-control" type="number" placeholder="Enter Percentage"
+                        [(ngModel)]="dataObj.per" name="per" maxlength="10" required>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6 col-12">
+                    <div class="form-group">
+                      <input class="form-control" type="text" placeholder="Enter Subject" name="sub"
+                        [(ngModel)]="dataObj.sub" max="50" required>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6 col-12">
+                    <div class="form-group">
+                      <input class="form-control" type="text" placeholder="Enter Address" name="add"
+                        [(ngModel)]="dataObj.add" max="50" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <button type="submit" class="btn btn-md btn-primary">Submit</button> &nbsp;
+                  <button type="button" class="btn btn-md btn-danger" data-dismiss="modal"
+                    aria-label="Close" (click)="reset()">Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

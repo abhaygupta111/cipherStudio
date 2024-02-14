@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <div class="container-fluid my-2">
+      <div class="card">
+        <div class="card-body">
+          <div class="row card_info">
+            <div class="col-md-10 col-10">
+              <h3>Cipher <span>Studio</span></h3>
+            </div>
+            <div class="col-md-2 col-2 text-right">
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#aboutModal">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-body">
+          <div class="row mb-2">
+            <div class="col-md-4 col-sm-6 col-12">
+              <div class="dataTables_filter">
+                <i class="fa fa-search"></i>
+                <input type="search" class="form-control form-control-sm" placeholder="Search" (keyup)="p=1"
+                  [(ngModel)]="searchObj" name="searchObj" aria-controls="example">
+              </div>
+            </div>
+          </div>
+          
+          <div class="custom_grid">
+            <div class="custom_grid_item">Sno</div>
+            <div class="custom_grid_item">FName <i class="fa fa-sort" (click)="sort('fName')"></i></div>
+            <div class="custom_grid_item">LName <i class="fa fa-sort" (click)="sort('lName')"></i></div>
+            <div class="custom_grid_item">DOB <i class="fa fa-sort" (click)="sort('dob')"></i></div>
+            <div class="custom_grid_item">RollNo <i class="fa fa-sort" (click)="sort('rollNo')"></i></div>
+            <div class="custom_grid_item">Class <i class="fa fa-sort" (click)="sort('class')"></i></div>
+            <div class="custom_grid_item">Percentage <i class="fa fa-sort" (click)="sort('per')"></i></div>
+            <div class="custom_grid_item">Subject <i class="fa fa-sort" (click)="sort('sub')"></i></div>
+            <div class="custom_grid_item">Add <i class="fa fa-sort" (click)="sort('add')"></i></div>
+            <div class="custom_grid_item">Action</div>
+          </div>
+          <div class="custom_grid" *ngFor="let item of dataList | filter : searchObj | orderBy: key: reverse | paginate: { itemsPerPage: noOfPage, currentPage: p }; index as i ">
+            <div class="custom_grid_item">{{ (i + 1) + (p - 1) * noOfPage}}</div>
+            <div class="custom_grid_item">{{item.fName | showhypen}}</div>
+            <div class="custom_grid_item">{{item.lName | showhypen}}</div>
+            <div class="custom_grid_item">{{item.dob | showhypen}}</div>
+            <div class="custom_grid_item">{{item.rollNo | showhypen}}</div>
+            <div class="custom_grid_item">{{item.class | showhypen}}</div>
+            <div class="custom_grid_item">{{item.per | showhypen}}</div>
+            <div class="custom_grid_item">{{item.sub | showhypen}}</div>
+            <div class="custom_grid_item">{{item.add | showhypen}}</div>
+            <div class="custom_grid_item">
+              <button type="button" class="btn btn-sm btn-primary" (click)="onEdit(item, i)"><i class="fa fa-pencil"
+                aria-hidden="true"></i></button>&nbsp;
+              <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete_modal" (click)="primaryId=item.id"><i
+                class="fa fa-trash" aria-hidden="true"></i></button>
+            </div>
+          </div>
+          <div class="text-center border border-dark" *ngIf="!dataList.length">
+            <p class="m-0">No Record Found</p>
+          </div>
+          <div class="">
+            <div colspan="20">
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-add-info-modal [dataList]="dataList" [editRecord]="recordObj" (setRecordData)="dataList = $event"></app-add-info-modal>
+  <app-detele-modal [deleteData]="primaryId" (deleteConfirmed)="deleteRecord($event)"></app-detele-modal>
+</body>
+</html>

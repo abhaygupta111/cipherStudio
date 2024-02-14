@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+.card_info h3 {
+    color: #002a59;
+}
+
+.card_info h3 span {
+    color: #1b87d2;
+}
+
+.custom_grid {
+    display: grid;
+    grid-template-columns: repeat(10, 10%);
+}
+
+.custom_grid_item {
+    border: 1px black solid;
+    font-weight: 500;
+    text-align: center;
+    padding: 5px 0;
+}
+.custom_grid_item i{
+    cursor: pointer;
+}
+
+.dataTables_filter i {
+    position: absolute;
+    top: 8px;
+    left: 25px;
+    transform: rotate(80deg);
+    color: #f44336;
+}
+
+.dataTables_filter .form-control {
+    padding-left: 30px;
+}
+@media only screen and (max-width: 786px) {
+    .custom_grid_item {
+        font-size: 9px;
+        padding: 2px 0;
+    }
+    .card_info h3 {
+        font-size: 20px;
+    }
+    .card-body{
+        padding: 5px;
+    }
+}
